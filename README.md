@@ -1,227 +1,80 @@
-# Better Shot
+# ShotPerfect
 
-<img width="3600" height="2025" alt="stage-1768238789948" src="https://github.com/user-attachments/assets/3051266a-5179-440f-a747-7980abd7bac3" />
+## Introduction
+ShotPerfect is a powerful desktop application designed to enhance your screenshot experience. Built with modern web technologies and leveraging the Tauri framework, ShotPerfect provides a seamless and efficient way to capture, annotate, and manage screenshots. The application is designed with a focus on performance and user experience, making it an ideal tool for both casual users and professionals.
 
-[![Discord](https://img.shields.io/badge/Discord-%235865F2.svg?style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/zThjstVs) 
-[![X (Twitter)](https://img.shields.io/badge/X-%231DA1F2.svg?style=for-the-badge&logo=X&logoColor=white)](https://x.com/code_kartik)
-[![Buy Me a Coffee](https://img.shields.io/badge/Buy%20Me%20a%20Coffee-%23FFDD00.svg?style=for-the-badge&logo=buy-me-a-coffee&logoColor=black)](https://www.buymeacoffee.com/code_kartik)
+## Key Features
+- **Screenshot Capture**: Easily capture screenshots with customizable options.
+- **Annotation Tools**: Annotate your screenshots with text, shapes, and highlights.
+- **Global Shortcuts**: Use keyboard shortcuts for quick access to screenshot functionalities.
+- **Cross-Platform Support**: Runs on Windows, macOS, and Linux.
+- **Tauri Integration**: Utilizes Tauri for a lightweight and secure desktop application.
+- **Real-time Preview**: Preview your screenshots instantly after capture.
+- **Image Processing**: Leverage Tesseract.js for OCR capabilities.
 
-> An open-source alternative to CleanShot X for macOS. Capture, edit, and enhance your screenshots with professional quality.
+## Folder Structure
+The project is organized as follows:
 
-Better Shot is a fast, lightweight screenshot tool built with Tauri + React. It provides a powerful yet simple workflow for capturing screenshots, editing them with backgrounds/effects/annotations, and exporting quickly.
+- `.git/`: Git version control files.
+- `.github/`: GitHub-specific files and workflows.
+- `.vscode/`: Visual Studio Code configuration files.
+- `AGENTS.md`: Documentation for agents used in the project.
+- `CHANGELOG.md`: A log of changes and updates made to the project.
+- `CODE_OF_CONDUCT.md`: Guidelines for community behavior.
+- `CONTRIBUTING.md`: Instructions for contributing to the project.
+- `LICENSE`: License information for the project.
+- `bettershot-landing/`: Landing page assets and components.
+- `index.html`: Main HTML file for the application.
+- `package.json`: Project metadata and dependencies.
+- `pnpm-lock.yaml`: Lockfile for package dependencies.
+- `postcss.config.js`: Configuration for PostCSS.
+- `public/`: Public assets for the application.
+- `scripts/`: Custom scripts for build and development processes.
+- `src/`: Source code for the application.
+- `src-tauri/`: Tauri-specific source code and configuration.
+- `tsconfig.json`: TypeScript configuration file.
+- `tsconfig.node.json`: Node-specific TypeScript configuration.
+- `vite.config.ts`: Vite configuration file for the project.
+- `vitest.config.ts`: Configuration for testing with Vitest.
 
-## Table of contents
-
-- [Better Shot](#better-shot)
-  - [Table of contents](#table-of-contents)
-  - [Background](#background)
-  - [Features](#features)
-    - [Capture Modes](#capture-modes)
-    - [Image Editing](#image-editing)
-    - [Annotation Tools](#annotation-tools)
-    - [OCR (Optical Character Recognition)](#ocr-optical-character-recognition)
-    - [Workflow](#workflow)
-  - [Install](#install)
-    - [Download a release (recommended)](#download-a-release-recommended)
-    - [Build from source](#build-from-source)
-      - [Requirements](#requirements)
-      - [Required permissions](#required-permissions)
-  - [Usage](#usage)
-    - [Quick Start](#quick-start)
-    - [Auto-apply workflow](#auto-apply-workflow)
-    - [Keyboard Shortcuts](#keyboard-shortcuts)
-      - [Capture Shortcuts](#capture-shortcuts)
-      - [Editor Shortcuts](#editor-shortcuts)
-  - [Development](#development)
-    - [Desktop app (Tauri)](#desktop-app-tauri)
-    - [Landing site (Next.js)](#landing-site-nextjs)
-  - [Contributing](#contributing)
-  - [License](#license)
-  - [Star history](#star-history)
-
-## Background
-
-Clean screenshot workflows usually need three things: capture fast, polish fast (background/shadow/roundness), and annotate fast (arrows, labels). Better Shot is a macOS-native app that keeps everything local and lightweight.
-
-## Features
-
-### Capture Modes
-
-- **Region capture**: Select any area of your screen (`⌘⇧2`, enabled by default)
-- **Fullscreen capture**: Capture your entire screen (`⌘⇧F`, enable in Preferences)
-- **Window capture**: Capture a specific window (`⌘⇧D`, enable in Preferences)
-
-### Image Editing
-
-- **Background library**: Curated wallpapers, Mac assets, and mesh patterns
-- **Custom backgrounds**: Solid colors and transparent checkerboard
-- **Effects**: Blur + noise controls
-- **Shadow + roundness**: Tune depth and corner radius
-- **Export**: Save at high quality for docs, decks, and social
-
-### Annotation Tools
-
-- **Shapes**: Circle, rectangle, line, arrow
-- **Text**: Add text with adjustable size
-- **Numbered labels**: Auto-incrementing badges for step-by-step callouts
-- **Editability**: Select, move, and delete annotations
-- **Styling**: Colors, opacity, borders, alignment
-
-### OCR (Optical Character Recognition)
-
-- **Text extraction**: Extract text from screenshots using OCR
-- **Full image processing**: Recognizes text from the entire edited image including annotations
-- **Copy to clipboard**: Easily copy extracted text for use elsewhere
-- **Automatic preprocessing**: Image enhancement (grayscale, contrast, brightness) for better accuracy
-- **Auto-rotation**: Automatically detects and corrects rotated text
-- **Offline support**: OCR works fully offline with bundled Tesseract.js and language data
-
-### Workflow
-
-- **Global shortcuts**: Capture from anywhere, even when hidden
-- **Auto-apply**: Apply default background and save without opening the editor
-- **Clipboard**: Copy to clipboard after capture/export
-- **Preferences**: Save directory, defaults, and shortcut settings persist
-- **Menu bar**: Accessible from the menu bar
-- **Native performance**: Rust + Tauri
-
-## Install
-
-### Download a release (recommended)
-
-1. Go to [Releases](https://github.com/KartikLabhshetwar/better-shot/releases)
-2. Download the appropriate DMG file:
-   - **Apple Silicon** (M1/M2/M3): `bettershot_*_aarch64.dmg`
-   - **Intel**: `bettershot_*_x64.dmg`
-3. Open the DMG and drag Better Shot to Applications
-4. First launch (recommended):
+## Installation & Setup
+To get started with ShotPerfect, clone the repository and install the dependencies:
 
 ```bash
-xattr -d com.apple.quarantine /Applications/bettershot.app
-```
-
-5. Grant Screen Recording permission when prompted
-
-> Note: Better Shot is ad-hoc signed. macOS Gatekeeper may warn for apps that aren’t notarized. You can inspect the source and build it yourself.
-
-### Build from source
-
-```bash
-git clone https://github.com/KartikLabhshetwar/better-shot.git
-cd better-shot
-
+git clone https://github.com/gopal-prakash-codes/ShotPerfect.git
+cd ShotPerfect
 pnpm install
-
-pnpm tauri build
 ```
 
-The installer will be located in `src-tauri/target/release/bundle/`
-
-#### Requirements
-
-- **Node.js**: 18+
-- **pnpm**
-- **Rust**: latest stable
-
-#### Required permissions
-
-On first launch, macOS will request **Screen Recording** permission:
-
-1. Go to **System Settings → Privacy & Security → Screen Recording**
-2. Enable **Better Shot**
-3. Restart the application if needed
-
-This permission is required for the app to capture screenshots of your screen.
+Make sure you have [Node.js](https://nodejs.org/) and [pnpm](https://pnpm.io/) installed on your machine.
 
 ## Usage
-
-### Quick Start
-
-1. Launch Better Shot from Applications (or use the menu bar icon)
-2. Capture:
-   - Default: `⌘⇧2` (region)
-   - Optional (enable in Preferences): `⌘⇧F` (fullscreen), `⌘⇧D` (window)
-3. Edit (background/effects/shadow/roundness)
-4. Annotate (shapes, arrows, text, numbered labels)
-5. Extract text: Use the "Extract Text" button to run OCR on your screenshot
-6. Export: `⌘S` to save, `⇧⌘C` to copy to clipboard
-
-### Auto-apply workflow
-
-For faster workflows, enable **Auto-apply background** on the main screen:
-
-1. Toggle on "Auto-apply background" on the main page
-2. Set your preferred default background in Preferences
-3. Capture a screenshot - it will automatically apply the background and save instantly
-4. No editor needed - perfect for quick captures with consistent styling
-
-### Keyboard Shortcuts
-
-Capture shortcuts are customizable in Preferences.
-
-#### Capture Shortcuts
-
-| Action | Default Shortcut |
-| --- | --- |
-| Capture Region | `⌘⇧2` |
-| Capture Fullscreen | `⌘⇧F` (disabled by default) |
-| Capture Window | `⌘⇧D` (disabled by default) |
-| Cancel Selection | `Esc` |
-
-#### Editor Shortcuts
-
-| Action | Shortcut |
-| --- | --- |
-| Save Image | `⌘S` |
-| Copy to Clipboard | `⇧⌘C` |
-| Undo | `⌘Z` |
-| Redo | `⇧⌘Z` |
-| Delete Annotation | `Delete` or `Backspace` |
-| Close Editor | `Esc` |
-
-## Development
-
-This repo contains:
-
-- The **desktop app** (Tauri + Vite) at the repo root
-- The **landing site** (Next.js) in `bettershot-landing/`
-
-### Desktop app (Tauri)
+To run the application in development mode, use the following command:
 
 ```bash
-pnpm tauri dev
-```
-
-Other useful commands:
-
-```bash
-pnpm lint:ci
-pnpm test:rust
-pnpm tauri build
-```
-
-### Landing site (Next.js)
-
-```bash
-cd bettershot-landing
-pnpm install
 pnpm dev
 ```
 
-## Contributing
+For building the application for production, execute:
 
-Contributions are welcome. Please read [CONTRIBUTING.md](CONTRIBUTING.md) before submitting a pull request.
+```bash
+pnpm build
+```
 
-## License
+To preview the built application, run:
 
-This project is licensed under the BSD 3-Clause License - see the [LICENSE](LICENSE) file for details.
+```bash
+pnpm preview
+```
 
-## Star history
+You can also run tests using:
 
-<a href="https://www.star-history.com/#KartikLabhshetwar/better-shot&type=date&legend=top-left">
- <picture>
-   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=KartikLabhshetwar/better-shot&type=date&theme=dark&legend=top-left" />
-   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=KartikLabhshetwar/better-shot&type=date&legend=top-left" />
-   <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=KartikLabhshetwar/better-shot&type=date&legend=top-left" />
- </picture>
-</a>
+```bash
+pnpm test
+```
+
+For a comprehensive list of available scripts, refer to the `scripts` section in the `package.json` file. 
+
+--- 
+
+For further information on contributing, please refer to the [CONTRIBUTING.md](CONTRIBUTING.md) file.
